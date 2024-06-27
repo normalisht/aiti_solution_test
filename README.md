@@ -1,8 +1,17 @@
-# it_solution_test
+# Генерация видео с бегущей строкой
 
-## Генерация видео с бегущей строкой
+## Запуск проекта
 
-Ручка
+```bash
+cd infra
+```
+
+```bash
+docker compose up --build -d
+```
+
+## Endpoints
+
 ```http request
 GET /create_video/?text=some_text
 ```

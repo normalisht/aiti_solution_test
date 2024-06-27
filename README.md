@@ -3,7 +3,7 @@
 ## Генерация видео с бегущей строкой
 
 Ручка
-```http
+```http request
 GET /create_video/?text=some_text
 ```
 
@@ -20,5 +20,10 @@ GET /create_video/?text=some_text
 * font_color - цвет текста (RGB). Например, font_color=255,255,255
 * background_color - цвет фона (RGB). Например, background_color=0,0,0
 
-
 [opencv docs](https://github.com/opencv/opencv-python)
+
+
+Доступ к файлу есть по полному имени файлу с расширением
+```http request
+GET /media/{file_name}
+```

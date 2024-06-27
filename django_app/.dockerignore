@@ -1,0 +1,6 @@
+media/
+logs/
+.env.example
+db.sqlite3
+.dockerignore
+Dockerfile

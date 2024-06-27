@@ -1,0 +1,37 @@
+version: '3.9'
+
+name: 'it_solution_network'
+
+services:
+  django:
+    build:
+      dockerfile: ../django_app/Dockerfile
+      context: ../django_app
+    container_name: it_solution_django_app
+    command: >
+      sh -c "python3 manage.py collectstatic --noinput &&
+             python3 manage.py migrate &&
+             python3 manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../django_app/.env
+    environment:
+      - DEBUG=False
+    depends_on:
+     - postgres_db
+
+  postgres_db:
+    image: postgres:15.0-alpine
+    container_name: it_solution_postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - PGPORT=${DB_PORT}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:

@@ -1,14 +1,13 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
+
+from settings.prepare import prepare
 
 
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.settings')
-    if not os.path.exists('./logs'):
-        os.makedirs('./logs')
+    prepare()
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

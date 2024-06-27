@@ -1,0 +1,20 @@
+version: '3.9'
+
+name: 'it_solution_dev_network'
+
+services:
+  django:
+    build:
+      dockerfile: ../django_app/Dockerfile
+      context: ../django_app
+    container_name: it_solution_django_app
+    env_file:
+      - ../django_app/.env
+    environment:
+      - DEBUG=True
+    command: >
+      sh -c "python3 manage.py collectstatic --noinput &&
+             python3 manage.py migrate &&
+             python3 manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"

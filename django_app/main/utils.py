@@ -20,7 +20,7 @@ def create_video(
     file_name: str = constants.FILE_NAME,
 ) -> dict[str, int]:
     file_extension = 'mp4'
-
+    print(file_path, file_name)
     num_frames = fps * duration
     text_size = cv.getTextSize(text, font, font_scale, font_thickness)[0]
 

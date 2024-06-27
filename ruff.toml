@@ -1,0 +1,29 @@
+line-length = 79
+fix = true
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".pre-commit-cache",
+    ".ruff_cache",
+    ".tox",
+    ".venv",
+    "venv",
+    "**/__pycache/*",
+    "**/migrations/*",
+    "**/settings/*",
+    "**/manage.py",
+]
+
+
+[lint]
+select = ["I", "E", "F"]
+fixable = ["F401", "RUF100"]
+ignore = ["I001"]
+
+
+[lint.isort.sections]
+"django" = ["django"]
+
+[format]
+quote-style = "single"
+docstring-code-format = true
